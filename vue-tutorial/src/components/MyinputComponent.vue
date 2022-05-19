@@ -23,6 +23,7 @@
     border-radius: 4px;
   }
   .margin-input{
+    width: 194px;
     margin-bottom: 4px;
   }
 </style>

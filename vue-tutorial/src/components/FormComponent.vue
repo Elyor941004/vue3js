@@ -1,5 +1,5 @@
 <template>
-  <form action="" class="form-control">
+  <form action="" class="form-group">
     <my-input v-model="comment.name"/>
     <my-input v-model="comment.body"/>
     <my-input v-model="comment.email"/>

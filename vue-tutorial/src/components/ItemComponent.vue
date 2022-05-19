@@ -8,14 +8,16 @@
       <th>Email</th>
       <th>delete</th>
     </tr>
-    <tr v-for="comment in comments" v-bind:key="comments.id">
-      <td>{{comment.id}}</td>
-      <td>{{comment.name}}</td>
-      <td>{{comment.body}}</td>
-      <td>{{comment.email}}</td>
-      <td><my-button class="commentDelete" @click="$emit('remove', comment)">delete</my-button></td>
-    </tr>
-  </table>
+      <TransitionGroup name="list" >
+        <tr v-for="comment in comments" v-bind:key="comments.id">
+          <td>{{comment.id}}</td>
+          <td>{{comment.name}}</td>
+          <td>{{comment.body}}</td>
+          <td>{{comment.email}}</td>
+          <td><my-button class="commentDelete" @click="$emit('remove', comment)">delete</my-button></td>
+        </tr>
+      </TransitionGroup>
+    </table>
   </div>
 </template>
 <script>
@@ -42,5 +44,14 @@
   }
   .commentDelete{
     background-color: red;
+  }
+  .list-enter-active,
+  .list-leave-active {
+    transition: all 0.5s ease;
+  }
+  .list-enter-from,
+  .list-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
   }
 </style>

@@ -1,24 +1,27 @@
 <template>
-  <select class="optionComment" >
-    <option value="" disabled>category</option>
-    <option value="" v-for="comment in comments" v-bind:key="comment.id" :value="comment.body">{{comment.name}}</option>
+  <select v-model="modelValue" @change="changeOption" class="optionComment" >
+    <option disabled>category</option>
+    <option v-for="comment in comments" v-bind:key="comment.id" :value="comment.value" >{{comment.text}}</option>
   </select>
 </template>
 <script>
   export default {
-    name:'my-select',
-    props:{
-      comments:{
-        type:Array,
+    name: 'my-select',
+    props: {
+      comments: {
+        type: Array,
       }
     },
-    data(){
+    data() {
 
     },
-    methods:{
-
+    methods: {
+      changeOption(e) {
+        this.$emit('update:modelValue', e.target.value)
+      }
     }
   }
+
 </script>
 <style>
 .optionComment{
